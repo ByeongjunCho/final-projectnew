@@ -1,0 +1,83 @@
+{% extends 'movies/base.html' %}
+{% load bootstrap4%}
+{% block body %}
+
+    <div class="container-fluid">
+        <!-- <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-1 bd-sidebar align-items-center margin-top=50px ">
+                <div id="list-example" class="list-group bd-sidebar sticky-top">
+                    <a class="list-group-item list-group-item-action" href="#list-item-0">박스오피스</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">액션</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">모험</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">애니메이션</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">코미디</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">범죄</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-6">다큐멘터리</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-7">드라마</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-8">가족</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-9">판타지</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-10">역사</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-11">공포</a>
+
+                    <a class="list-group-item list-group-item-action" href="#list-item-12">음악</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-13">미스테리</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-14">로맨스</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-15">SF</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-16">TV영화</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-17">스릴러</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-18">전쟁</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-19">서부</a>
+                </div>
+            </div> -->
+
+            <main class="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content">
+                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+                    <h4 id="list-item-0">박스오피스</h4>
+                        {% for movie in genre0.movie_set.all %}
+                        <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='100'>
+                        {% endfor %}
+                    <h4 id="list-item-1">액션</h4>
+                        {% for movie in genre1.movie_set.all %}
+                        <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+                        
+                    <h4 id="list-item-2">모험</h4>
+                        {% for movie in genre2.movie_set.all %}
+                        <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='300'>
+                        {% endfor %}
+                    
+                    <h4 id="list-item-3">애니메이션</h4>
+                        {% for movie in genre3.movie_set.all %}
+                        <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='300'>
+                        {% endfor %}
+                        <!-- <a class="list-group-item list-group-item-action" href="#list-item-3">애니메이션</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-4">코미디</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-5">범죄</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-6">다큐멘터리</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-7">드라마</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-8">가족</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-9">판타지</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-10">역사</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-11">공포</a>
+    
+                        <a class="list-group-item list-group-item-action" href="#list-item-12">음악</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-13">미스테리</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-14">로맨스</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-15">SF</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-16">TV영화</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-17">스릴러</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-18">전쟁</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-19">서부</a> --> 
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+
+
+    {% endblock  %}
