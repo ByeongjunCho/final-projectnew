@@ -8,11 +8,9 @@ from .models import User
 from django.contrib.auth.decorators import login_required
 
 
-def main(request):
-    return render(request,'accounts/main.html')
 
 
-def index(request):
+def indexs(request):
     Users = User.objects.all()
     context = {
         'Users':Users

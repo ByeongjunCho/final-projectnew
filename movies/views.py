@@ -4,6 +4,9 @@ from .models import Movie,Review, Genre
 from django.contrib.auth.decorators import login_required
 
 
+def main(request):
+    return render(request,'movies/main.html')
+
 # Create your views here.
 def index(request):
     movies = Movie.objects.all()

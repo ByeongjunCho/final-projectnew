@@ -1,31 +1,38 @@
 {% extends 'movies/base.html' %}
 {% load bootstrap4 %}
 {% block body %}
-<a href="{% url 'movies:index' %}">돌아가기</a>
 
-<hr>
-<h1>{{movie.title}}</h1>
-<h2>{{movie.genre_id.name}}</h2>
-<p>{{movie.audience}}</p>
-<img src="{{movie.poster_url}}" alt="">
-<p>{{movie.description}}</p>
+<div>
+        <hr>
+        <h1>{{movie.title}}</h1>
+        <h2>{{movie.genre_id.name}}</h2>
+        <p>{{movie.audience}}</p>
+        <img src="{{movie.poster_url}}" alt="" width="100px">
+        <p>{{movie.description}}</p>
+        
+        {% for review in reviews %}
+        <p>{{review.content}}</p>
+        <p>{{review.score}}</p>
+        {% endfor %}
+        
+        
+        <p>{{movie.like_users.count}}명이 좋아합니다.</p>
+        <a href="/movies/{{movie.pk}}/like/">좋아요</a>
+        <br>
+        
+        
+        <form action="{% url 'movies:review_create' movie.pk %}" method='POST'>
+        {% csrf_token %}
+        {{review_form.as_p}}
+        <input type="submit">
+        </form>
+       
+</div>
 
-{% for review in reviews %}
-<p>{{review.content}}</p>
-<p>{{review.score}}</p>
-{% endfor %}
-
-
-<p>{{movie.like_users.count}}명이 좋아합니다.</p>
-<a href="/movies/{{movie.pk}}/like/">좋아요</a>
-<br>
-
-
-<form action="{% url 'movies:review_create' movie.pk %}" method='POST'>
-{% csrf_token %}
-{{review_form.as_p}}
-<input type="submit">
-</form>
-
+<style>
+    .div {
+        color:white;
+    }
+</style>
 
 {% endblock  %}
