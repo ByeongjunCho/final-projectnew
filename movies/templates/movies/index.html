@@ -76,13 +76,7 @@
                         <img src="{{movie.poster_url}}" alt="" width='200'>
                         {% endfor %}
                 </div>
-                <div class="section sec10">
-                        <h4 id="list-item-10">역사</h4>
-                        {% for movie in genre10.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
+
                 <div class="section sec11">
                         <h4 id="list-item-11">공포</h4>
                         {% for movie in genre11.movie_set.all %}
@@ -90,20 +84,8 @@
                         <img src="{{movie.poster_url}}" alt="" width='200'>
                         {% endfor %}
                 </div>
-                <div class="section sec12">
-                        <h4 id="list-item-12">음악</h4>
-                        {% for movie in genre12.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec13">
-                        <h4 id="list-item-13">미스테리</h4>
-                        {% for movie in genre13.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
+
+
                 <div class="section sec14">
                         <h4 id="list-item-14">로맨스</h4>
                         {% for movie in genre14.movie_set.all %}
@@ -118,27 +100,8 @@
                         <img src="{{movie.poster_url}}" alt="" width='200'>
                         {% endfor %}
                 </div>
-                <div class="section sec16">
-                        <h4 id="list-item-16">TV영화</h4>
-                        {% for movie in genre16.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec17">
-                        <h4 id="list-item-17">스릴러</h4>
-                        {% for movie in genre16.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec18">
-                        <h4 id="list-item-18">전쟁</h4>
-                        {% for movie in genre18.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
+
+
 
 
 
@@ -168,8 +131,8 @@
                 });
             </script>
     <style>
-        #pagepiling .section.sec0{
-            background:url("{% static 'images/boxoffice.jpg' %}");
+        #pagepiling .section{
+            background:url("{% static 'images/image.png' %}");
 
         }
         h4 {

@@ -9,6 +9,7 @@
         div{
             color:white;
         }
+        
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,25 +19,25 @@
     <title>Document</title>
     <ul class="nav justify-content-end fixed-top"> 
             <li class="nav-item">
-                    <a class="nav-link text-muted " href="{% url 'movies:index' %}">돌아가기</a>
+                    <a class="nav-link text-muted " href="{% url 'movies:index' %}">HOME</a>
                 </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:profile' user.pk %}">{{ user.username }} </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link text-muted" href="{% url "accounts:logout" %}">로그아웃 </a>
+            <a class="nav-link text-muted" href="{% url "accounts:logout" %}">LOGOUT</a>
         </li>
         {% else %}
         <li class="nav-item">
-            <a class="nav-link text-muted" href="{% url "accounts:signup" %}">회원가입</a>
+            <a class="nav-link text-muted" href="{% url "accounts:signup" %}">SIGNUP</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-muted" href="{% url "accounts:login" %}">로그인</a>
+            <a class="nav-link text-muted" href="{% url "accounts:login" %}">LOGIN</a>
         </li>
         {% endif %}
         <li class="nav-item">
-            <a class="nav-link text-muted " href="{% url 'accounts:indexs' %}">유저 정보</a>
+            <a class="nav-link text-muted " href="{% url 'accounts:indexs' %}">PROFILE</a>
         </li>
         
     </ul>
@@ -66,13 +67,16 @@
     {% endblock  %}
 </body>
 <style>
-@font-face {
-    font-family: SCDream6;
-    src: url("{% static 'fonts/SCDream6.otf' %}") format('truetype');
-}
-body { 
-    font-family: SCDream6; 
-}
+    @font-face {
+        font-family: SCDream6;
+        src: url("{% static 'fonts/SCDream6.otf' %}") format('truetype');
+    }
+    body { 
+        font-family: SCDream6; 
+    }
+    a {
+        color:#000000;
+    }
 </style>
 
 
