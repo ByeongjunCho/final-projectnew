@@ -1,38 +1,120 @@
 {% extends 'movies/base.html' %}
 {% load bootstrap4 %}
 {% block body %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/star.css'%}">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <div>
-        <hr>
-        <h1>{{movie.title}}</h1>
-        <h2>{{movie.genre_id.name}}</h2>
-        <p>{{movie.audience}}</p>
-        <img src="{{movie.poster_url}}" alt="" width="100px">
-        <p>{{movie.description}}</p>
-        
-        {% for review in reviews %}
-        <p>{{review.content}}</p>
-        <p>{{review.score}}</p>
-        {% endfor %}
-        
-        
-        <p>{{movie.like_users.count}}명이 좋아합니다.</p>
-        <a href="/movies/{{movie.pk}}/like/">좋아요</a>
+    <hr>
+    <h1>{{movie.title}}</h1>
+    <h2>{{movie.genre_id.name}}</h2>
+    <p>{{movie.audience}}</p>
+    <img src="{{movie.poster_url}}" alt="" width="100px">
+    <p>{{movie.description}}</p>
+
+    {% for review in reviews %}
+    <p>{{review.content}}</p>
+    <p>{{review.score}}</p>
+    {% endfor %}
+
+
+    <p>{{movie.like_users.count}}명이 좋아합니다.</p>
+    <a href="/{{movie.pk}}/like/">좋아요</a>
+    <br>
+
+    <div>
+        <span class="star-input">
+        <span class="input">
+            <input type="radio" name="star-input" id="p1" value="1"><label for="p1">1</label>
+            <input type="radio" name="star-input" id="p2" value="2"><label for="p2">2</label>
+            <input type="radio" name="star-input" id="p3" value="3"><label for="p3">3</label>
+            <input type="radio" name="star-input" id="p4" value="4"><label for="p4">4</label>
+            <input type="radio" name="star-input" id="p5" value="5"><label for="p5">5</label>
+            <input type="radio" name="star-input" id="p6" value="6"><label for="p6">6</label>
+            <input type="radio" name="star-input" id="p7" value="7"><label for="p7">7</label>
+            <input type="radio" name="star-input" id="p8" value="8"><label for="p8">8</label>
+            <input type="radio" name="star-input" id="p9" value="9"><label for="p9">9</label>
+            <input type="radio" name="star-input" id="p10" value="10"><label for="p10">10</label>
+        </span>
+        <output for="star-input"><b>0</b>점</output>
         <br>
-        
-        
-        <form action="{% url 'movies:review_create' movie.pk %}" method='POST'>
+        <textarea name="content" id="content" cols="30" rows="1"></textarea>
+        <button id="star" data-id="{{movie.pk}}">점수보내기</button>
+    </span>
+    </div>
+    {% comment %} <form action="{% url 'movies:review_create' movie.pk %}" method='POST'>
         {% csrf_token %}
         {{review_form.as_p}}
         <input type="submit">
-        </form>
-       
+    </form> {% endcomment %}
+
 </div>
 
 <style>
     .div {
-        color:white;
+        color: hite;
     }
 </style>
+<script>
+    // star rating
+    var starRating = function () {
+        var $star = $(".star-input"),
+            $result = $star.find("output>b");
+        //$result = $star.find("output>input>b");
+        console.log($result)
+        $(document)
+            .on("focusin", ".star-input>.input", function () {
+                $(this).addClass("focus");
+            })
+            .on("focusout", ".star-input>.input", function () {
+                var $this = $(this);
+                setTimeout(function () {
+                    if ($this.find(":focus").length === 0) {
+                        $this.removeClass("focus");
+                    }
+                }, 100);
+            })
+            .on("change", ".star-input :radio", function () {
+                $result.text($(this).next().text());
+            })
+            .on("mouseover", ".star-input label", function () {
+                $result.text($(this).text());
+            })
+            .on("mouseleave", ".star-input>.input", function () {
+                var $checked = $star.find(":checked");
+                if ($checked.length === 0) {
+                    $result.text("0");
+                } else {
+                    $result.text($checked.next().text());
+                }
+            });
+    };
+    starRating();
+    var $star = $(".star-input"),
+    $result = $star.find("output>b");
+    const starButton = document.querySelector('#star')
+    starButton.addEventListener('click', function (event) {
+        console.log(event.target.dataset.id)
+        // POST 요청 csrftoken을 AJAX 요청시 설정하는 법
+        axios.defaults.xsrfCookieName = 'csrftoken'
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+        // django is_ajax() 분기가 되는 기준이 아래의 헤더 설정에 따라서 진행
+        axios.defaults.headers.common['X-REQUESTED-WITH'] = 'XMLHttpRequest'
+        axios.post(`/${event.target.dataset.id}/create/`, {score: $result[0].innerText, content: document.getElementById('content').value})
+            .then(response => {
+                console.log(response)
+                console.log(event.target)
+                $result.text("0");
+                document.getElementById('content').value = ''
+                starRating();
+                
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    })
 
+
+</script>
 {% endblock  %}

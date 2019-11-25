@@ -18,7 +18,7 @@
     {% for movie in user_profile.like_movies.all %}
     <p>
     <a href="{% url 'movies:detail' movie.pk %}">
-        {{movie.pk}} : {{movie.title}}
+        {{movie.title}}
     </p>
     {% endfor %}
     <hr>
