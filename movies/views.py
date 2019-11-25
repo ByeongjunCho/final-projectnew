@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from .forms import MovieForm,ReviewForm
 from .models import Movie,Review, Genre
 from django.contrib.auth.decorators import login_required
-from IPython import embed
+
 
 def main(request):
     return render(request,'movies/main.html')
@@ -69,3 +69,15 @@ def star(request, movie_id):
     score = int(eval(request.body.decode("utf-8"))['score'])
     # embed()
     
+
+def test(request):
+    movies = Movie.objects.all()
+    genres = Genre.objects.all()
+    # bmovies = BMovie.objects.all()
+    context = {
+        'movies':movies,
+        # 'bmovies': bmovies,
+    }
+    for i, v in enumerate(genres):
+        context.update({'genre'+str(i) : v})
+    return render(request,'movies/test.html',context)
