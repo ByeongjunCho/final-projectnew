@@ -1,18 +1,16 @@
 {% extends 'movies/base.html' %}
 {% load bootstrap4%}
 {% load static %}
-
-<style>
-        sapn {
-                border-color: rgb(0, 0, 0);
-        }
-</style>
 {% block body %}
 <div>
         <span style="border-color: rgb(255, 255, 255);"></span>
 </div>
 <link rel="stylesheet" href="{% static 'css/jquery.pagepiling.css' %}">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Armata" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
 
 
 <div id="pagepiling">
@@ -48,25 +46,44 @@
                 </div>
         </div>
         <div class="section sec1">
-                <h4 id="list-item-1">액션</h4>
-                {% for movie in genre1.movie_set.all %}
-                <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                <h4 id="list-item-1">ACTION</h4>
+    
+                        {% for movie in genre1.movie_set.all %}
+                        <div id="gridder-content-{{movie.pk}}" class="gridder-content">
+                                <div class="row">
+                                <div class="col-sm-1">
+                                        <img src="{{movie.poster_url}}" class="img-fluid" />
+                                </div>
+                                <div class="col-sm-1">
+                                        <h2>{{movie.title}}</h2>
+                                        <p>{{movie.description}}</p>
+                                        
+                                </div>
+                                </div>
+                        </div>
                         {% endfor %}
+                        <ul class="gridder">
+                        {% for movie in genre1.movie_set.all %}
+                        <li class="gridder-list col-sm-1" data-griddercontent="#gridder-content-{{movie.pk}}">{{movie.title}}
+                        </li>
+                        {% endfor %}
+
+
         </div>
         <div class="section sec2">
                 <h4 id="list-item-2">모험</h4>
                 {% for movie in genre2.movie_set.all %}
-                <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                <a href="{% url 'movies:detail' movie.pk %}">/{{movie.title}}/
+                        <!-- <img src="{{movie.poster_url}}" alt="" width='200'> -->
                         {% endfor %}
         </div>
         <div class="section sec3">
                 <h4 id="list-item-3">애니메이션</h4>
                 {% for movie in genre3.movie_set.all %}
-                <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
+                <ul>
+                        <li class="li_preview"><a href="{{movie.poster_url}}" class="preview" title="{{movie.title}}"><p>{{movie.title}}</p></a></li>
+                </ul>
+                {% endfor %}
         </div>
         <div class="section sec4">
                 <h4 id="list-item-4">코미디</h4>
@@ -134,23 +151,50 @@
                         <img src="{{movie.poster_url}}" alt="" width='200'>
                         {% endfor %}
         </div>
-
-
-
-
-
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script> -->
+</script>
+
+
+
+<script src="{% static 'js/jquery.gridder.js' %}"></script>
+        <script>
+            jQuery(document).ready(function ($) {
+
+                // REMOVE AND ADD CLICK EVENT 
+                $('.doAddItem').on('click', function () {
+                    $(".gridder").data('gridderExpander').gridderAddItem('TEST');
+                });
+
+                // Call Gridder
+                $(".gridder").gridderExpander({
+                    scrollOffset: 60,
+                    scrollTo: "panel", // "panel" or "listitem"
+                    animationSpeed: 400,
+                    animationEasing: "easeInOutExpo",
+                    onStart: function () {
+                        console.log("Gridder Inititialized");
+                    },
+                    onExpanded: function (object) {
+                        console.log("Gridder Expanded");
+                    },
+                    onChanged: function (object) {
+                        console.log("Gridder Changed");
+                    },
+                    onClosed: function () {
+                        console.log("Gridder Closed");
+                    }
+                });
+            });
+        </script>
+
+
 <script src="{% static 'js/jquery.pagepiling.js' %}"></script>
 <script type="text/javascript">
         $(document).ready(function () {
@@ -166,18 +210,25 @@
                         }
                 });
         });
-</script>
+</script> 
+
+
+
 <style>
         #pagepiling .section {
-                background:url("{% static 'images/image.png' %}");
+                background:url("{% static 'images/image3.jpg' %}");
 
         }
 
         h4 {
                 color: #d4d4d4;
-                ;
                 font-size: 80px;
-                text-shadow: 0 5px 15px rgba(0, 0, 0.5);
+                text-shadow: 0 5px 15px rgb(0, 0, 0);
+        }
+        a {
+                color: #d4d4d4;
+                font-size: 20px;
+                text-shadow: 0 5px 15px rgb(0, 0, 0);
         }
 </style>
 {% endblock  %}

@@ -73,10 +73,8 @@ def star(request, movie_id):
 def test(request):
     movies = Movie.objects.all()
     genres = Genre.objects.all()
-    # bmovies = BMovie.objects.all()
     context = {
         'movies':movies,
-        # 'bmovies': bmovies,
     }
     for i, v in enumerate(genres):
         context.update({'genre'+str(i) : v})

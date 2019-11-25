@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html lang="ko">
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>URL Screenshot Preview with jQuery</title>
+<meta name="description" content="Easiest jQuery Tooltip Ever">
+<script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+</meta>
+
+
+<style>
+
+.li_preview{
+	list-style:none;
+	float:left;
+	display:inline;
+	margin-right:10px;
+}
+
+
+</style>
 </head>
 <body>
-    
+
+    {% for movie in genre3.movie_set.all %}
+    <ul>
+        <li class="li_preview"><a href="{{movie.poster_url}}" class="preview" title="{{movie.title}}" width="50px"><p>{{movie.title}}</p></a></li>
+    </ul>
+    {% endfor %}
+	
 </body>
 </html>
+
