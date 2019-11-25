@@ -1,144 +1,156 @@
 {% extends 'movies/base.html' %}
 {% load bootstrap4%}
 {% load static %}
+
+<style>
+sapn {
+      "border-color": rgb(0,0,0);  
+}
+        
+</style>
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/jquery.pagepiling.css' %}">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-            <div id="pagepiling">
-                <div class="section sec0">
-                        <h4 id="list-item-0">BOXOFFICE</h4>
-                        {% for movie in genre0.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec1">
-                        <h4 id="list-item-1">액션</h4>
-                        {% for movie in genre1.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec2">
-                        <h4 id="list-item-2">모험</h4>
-                        {% for movie in genre2.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec3">
-                        <h4 id="list-item-3">애니메이션</h4>
-                        {% for movie in genre3.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec4">
-                        <h4 id="list-item-4">코미디</h4>
-                        {% for movie in genre4.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec5">
-                        <h4 id="list-item-5">범죄</h4>
-                        {% for movie in genre5.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec6">
-                        <h4 id="list-item-6">다큐멘터리</h4>
-                        {% for movie in genre6.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec7">
-                        <h4 id="list-item-7">드라마</h4>
-                        {% for movie in genre7.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec8">
-                        <h4 id="list-item-8">가족</h4>
-                        {% for movie in genre8.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
-                <div class="section sec9">
-                        <h4 id="list-item-9">판타지</h4>
-                        {% for movie in genre9.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
 
-                <div class="section sec11">
-                        <h4 id="list-item-11">공포</h4>
-                        {% for movie in genre11.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
+<div id="pagepiling">
+        <div class="section sec0">
+                <h4 id="list-item-0">BOXOFFICE</h4>
+                {% for movie in genre0.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
                         <img src="{{movie.poster_url}}" alt="" width='200'>
                         {% endfor %}
-                </div>
+        </div>
+        <div class="section sec1">
+                <h4 id="list-item-1">액션</h4>
+                {% for movie in genre1.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec2">
+                <h4 id="list-item-2">모험</h4>
+                {% for movie in genre2.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec3">
+                <h4 id="list-item-3">애니메이션</h4>
+                {% for movie in genre3.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec4">
+                <h4 id="list-item-4">코미디</h4>
+                {% for movie in genre4.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec5">
+                <h4 id="list-item-5">범죄</h4>
+                {% for movie in genre5.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec6">
+                <h4 id="list-item-6">다큐멘터리</h4>
+                {% for movie in genre6.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec7">
+                <h4 id="list-item-7">드라마</h4>
+                {% for movie in genre7.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec8">
+                <h4 id="list-item-8">가족</h4>
+                {% for movie in genre8.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec9">
+                <h4 id="list-item-9">판타지</h4>
+                {% for movie in genre9.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
 
-
-                <div class="section sec14">
-                        <h4 id="list-item-14">로맨스</h4>
-                        {% for movie in genre14.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
+        <div class="section sec11">
+                <h4 id="list-item-11">공포</h4>
+                {% for movie in genre11.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
                         <img src="{{movie.poster_url}}" alt="" width='200'>
                         {% endfor %}
-                </div>
-                <div class="section sec15">
-                        <h4 id="list-item-15">SF</h4>
-                        {% for movie in genre15.movie_set.all %}
-                        <a href="{% url 'movies:detail' movie.pk %}">
-                        <img src="{{movie.poster_url}}" alt="" width='200'>
-                        {% endfor %}
-                </div>
+        </div>
 
 
+        <div class="section sec14">
+                <h4 id="list-item-14">로맨스</h4>
+                {% for movie in genre14.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
+        <div class="section sec15">
+                <h4 id="list-item-15">SF</h4>
+                {% for movie in genre15.movie_set.all %}
+                <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{movie.poster_url}}" alt="" width='200'>
+                        {% endfor %}
+        </div>
 
 
 
-            </div>
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"> 
-            </script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-            </script> -->
-            <script src="{% static 'js/jquery.pagepiling.js' %}"></script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $('#pagepiling').pagepiling({
+
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script> -->
+<script src="{% static 'js/jquery.pagepiling.js' %}"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+                $('#pagepiling').pagepiling({
                         navigation: {
-                            'textColor': '#fff',
-                            'bulletsColor': '#fff',
-                            'position': 'right',
-                            'tooltips': ['section1', 'section2', 'section3', 'section4']
+                                'textColor': '#fff',
+                                'bulletsColor': '#fff',
+                                'position': 'right',
+                                'tooltips': ['section1', 'section2', 'section3',
+                                        'section4'
+                                ]
                         }
-                    });
                 });
-            </script>
-    <style>
-        #pagepiling .section{
-            background:url("{% static 'images/image.png' %}");
+        });
+</script>
+<style>
+        #pagepiling .section {
+                background:url("{% static 'images/image.png' %}");
 
         }
+
         h4 {
-            color: #d4d4d4;;
-            font-size:80px;
-            text-shadow: 0 5px 15px rgba(0,0,0.5);
+                color: #d4d4d4;
+                ;
+                font-size: 80px;
+                text-shadow: 0 5px 15px rgba(0, 0, 0.5);
         }
-    </style>
-    {% endblock  %}
+</style>
+{% endblock  %}
