@@ -80,9 +80,7 @@
         <div class="section sec3">
                 <h4 id="list-item-3">애니메이션</h4>
                 {% for movie in genre3.movie_set.all %}
-                <ul>
-                        <li class="li_preview"><a href="{{movie.poster_url}}" class="preview" title="{{movie.title}}"><p>{{movie.title}}</p></a></li>
-                </ul>
+                <ul><li class="li_preview"><a href="{{movie.poster_url}}" class="preview" title="{{movie.title}}"><p>{{movie.title}}</p></a></li></ul>
                 {% endfor %}
         </div>
         <div class="section sec4">
